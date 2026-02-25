@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구유성 - 프로페셔널 남친</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Cute button style */
+        .cute-button {
+            font-size: 1.2em;
+            letter-spacing: 1px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+        }
+
+        /* Typing Animation */
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            margin-left: 4px;
+            background-color: #7c3aed;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        /* Fade in animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        /* Progress bar animation */
+        @keyframes fillProgress {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        .progress-animate {
+            animation: fillProgress 1.5s ease-out forwards;
+        }
+
+        /* Gradient blob background */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(8, 145, 178, 0.15));
+        }
+
+        .blob-1 {
+            width: 300px;
+            height: 300px;
+            top: -50px;
+            right: -100px;
+            animation: moveBlob 8s infinite;
+        }
+
+        .blob-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 50px;
+            left: -80px;
+            animation: moveBlob 6s infinite reverse;
+        }
+
+        @keyframes moveBlob {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            33% {
+                transform: translate(30px, -50px);
+            }
+            66% {
+                transform: translate(-20px, 20px);
+            }
+        }
+
+        /* Smooth transitions */
+        a, button {
+            transition: all 0.3s ease;
+        }
+
+        .nav-link.active {
+            color: #ec4899;
+            border-bottom: 2px solid #ec4899;
+        }
+
+        /* Floating flowers animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        .flower {
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .flower:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .flower:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .flower:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .flower:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+
+        /* Cute button enhanced */
+        .cute-button {
+            font-size: 1.1em;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+        }
+
+        .cute-button:hover {
+            box-shadow: 0 8px 30px rgba(236, 72, 153, 0.6);
+        }
+
+        /* Image styling */
+        img {
+            transition: transform 0.3s ease;
+        }
+
+        .photo-frame {
+            position: relative;
+            display: inline-block;
+        }
+
+        .photo-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(251, 113, 133, 0.2));
+            pointer-events: none;
+        }
+
+        /* Polaroid style */
+        .polaroid {
+            position: relative;
+            width: fit-content;
+            background: white;
+            padding: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: rotate(-2deg);
+            margin: 20px 0;
+        }
+
+        .polaroid::after {
+            content: '💕 우리 함께 💕';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: #ec4899;
+            font-weight: bold;
+            width: 95%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-800">
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white shadow-sm border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-pink-600">
+                <a href="#home">🌸 구유성의 마음 🌸</a>
+            </div>
+            <div class="hidden md:flex gap-8">
+                <a href="#home" class="nav-link text-slate-700 hover:text-pink-600 pb-2">Home</a>
+                <a href="#about" class="nav-link text-slate-700 hover:text-pink-600 pb-2">About</a>
+                <a href="#skills" class="nav-link text-slate-700 hover:text-pink-600 pb-2">Skills</a>
+                <a href="#gallery" class="nav-link text-slate-700 hover:text-pink-600 pb-2">우리 함께 💕</a>
+                <a href="#projects" class="nav-link text-slate-700 hover:text-pink-600 pb-2">Projects</a>
+                <a href="#contact" class="nav-link text-slate-700 hover:text-pink-600 pb-2">Contact</a>
+            </div>
+            <button id="menuBtn" class="md:hidden text-slate-700 text-2xl">☰</button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-50 border-t border-slate-100">
+            <a href="#home" class="block px-4 py-2 text-slate-700 hover:bg-pink-50">Home</a>
+            <a href="#about" class="block px-4 py-2 text-slate-700 hover:bg-pink-50">About</a>
+            <a href="#skills" class="block px-4 py-2 text-slate-700 hover:bg-pink-50">Skills</a>
+            <a href="#gallery" class="block px-4 py-2 text-slate-700 hover:bg-pink-50">우리 함께 💕</a>
+            <a href="#projects" class="block px-4 py-2 text-slate-700 hover:bg-pink-50">Projects</a>
+            <a href="#contact" class="block px-4 py-2 text-slate-700 hover:bg-pink-50">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-orange-100 via-pink-100 to-purple-100">
+        <!-- Animated Blobs -->
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+
+        <div class="relative z-10 text-center px-4 max-w-3xl mx-auto">
+            <!-- Cute Header Image -->
+            <div class="text-8xl mb-8 animate-bounce">
+                💝✨💙
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 text-slate-800 fade-in">
+                안녕하세요,<br><span class="text-pink-500">구유성</span>입니다 🌸
+            </h1>
+
+            <div class="text-2xl md:text-3xl font-semibold text-pink-500 mb-6 fade-in delay-100">
+                <span id="typing">지예의 가장 소중한</span><span class="typing-cursor"></span>
+            </div>
+
+            <p class="text-lg md:text-xl text-slate-600 mb-8 fade-in delay-200 leading-relaxed">
+                당신의 미소가 저를 가장 행복하게 만듭니다. 💕<br>
+                매 순간을 소중히 여기며, 당신의 곁에서 행복을 함께 만들어가겠습니다.
+            </p>
+
+            <button onclick="document.getElementById('about').scrollIntoView();" class="fade-in delay-300 bg-violet-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-violet-700 shadow-lg hover:shadow-xl">
+                더 알아보기 ↓
+            </button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 bg-gradient-to-b from-pink-100 to-purple-100">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-4 text-slate-800">💕 About Me 💕</h2>
+            <div class="text-center mb-12 text-2xl">🌸 🌺 🌼 🌷 🌹</div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div class="flex justify-center">
+                    <div class="relative w-72 h-80 rounded-2xl overflow-hidden shadow-2xl border-8 border-pink-300 hover:shadow-3xl transition-shadow transform hover:scale-105">
+                        <img src="couple.jpg" alt="우리 함께의 사진" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-pink-500 via-transparent to-transparent opacity-10"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-3xl font-bold mb-6 text-pink-500">🌸 당신의 행복을 위한 남친 🌸</h3>
+                    <p class="text-lg text-slate-600 mb-4 leading-relaxed">
+                        당신의 웃음이 제 가장 큰 행복입니다. 매일 함께하는 시간들이 저를 가장 특별하게 만들어줍니다. 💗
+                    </p>
+                    <p class="text-lg text-slate-600 mb-4 leading-relaxed">
+                        작은 것부터 큰 것까지, 당신과의 모든 순간을 소중히 간직하고 싶습니다. 당신의 눈빛, 목소리, 웃음... 모든 것이 소중합니다.
+                    </p>
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        🌺 당신을 행복하게 해줄 무한한 사랑으로 약속합니다 ∞
+                    </p>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-pink-50 to-rose-50 p-8 rounded-lg text-center border-2 border-pink-300 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="text-5xl mb-2">🌸</div>
+                    <div class="text-5xl font-bold text-pink-500 mb-2">∞</div>
+                    <p class="text-slate-700 font-semibold">당신을 위한 웃음</p>
+                </div>
+                <div class="bg-gradient-to-br from-red-50 to-pink-50 p-8 rounded-lg text-center border-2 border-red-300 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="text-5xl mb-2">💗</div>
+                    <div class="text-5xl font-bold text-red-500 mb-2">100%</div>
+                    <p class="text-slate-700 font-semibold">사랑하는 마음</p>
+                </div>
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-lg text-center border-2 border-purple-300 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="text-5xl mb-2">🦋</div>
+                    <div class="text-5xl font-bold text-purple-500 mb-2">∞</div>
+                    <p class="text-slate-700 font-semibold">함께할 미래</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 bg-gradient-to-b from-rose-50 to-pink-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-4 text-slate-800">💖 Special Skills 💖</h2>
+            <div class="text-center mb-12 text-2xl">🌹 🌺 🌸 🌼 🌷</div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Main Skill -->
+                <div class="md:col-span-2 bg-gradient-to-r from-white to-pink-50 p-8 rounded-lg shadow-md border-2 border-pink-300">
+                    <div class="flex items-center mb-4">
+                        <span class="text-4xl mr-4">😊</span>
+                        <div>
+                            <h3 class="text-2xl font-bold text-pink-600">당신을 행복하게 만들기</h3>
+                            <p class="text-pink-500">💕 제가 가장 잘하는 것</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-pink-200 rounded-full h-4 overflow-hidden">
+                        <div class="bg-gradient-to-r from-pink-500 to-rose-500 h-full progress-animate" style="width: 100%;"></div>
+                    </div>
+                    <p class="text-right text-sm text-pink-600 font-semibold mt-2">완벽함 💯</p>
+                </div>
+
+                <!-- Sub Skills -->
+                <div class="bg-gradient-to-br from-white to-pink-50 p-6 rounded-lg shadow-md border border-pink-300 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">💕</span>
+                        <h3 class="text-lg font-bold text-pink-600">당신의 마음을 읽기</h3>
+                    </div>
+                    <div class="w-full bg-pink-200 rounded-full h-3 overflow-hidden">
+                        <div class="bg-gradient-to-r from-pink-500 to-rose-500 h-full progress-animate" style="width: 99%; animation-delay: 0.1s;"></div>
+                    </div>
+                    <p class="text-right text-xs text-pink-600 mt-1">99%</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-white to-blue-50 p-6 rounded-lg shadow-md border border-blue-300 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">🚗</span>
+                        <h3 class="text-lg font-bold text-blue-600">안전한 드라이빙</h3>
+                    </div>
+                    <div class="w-full bg-blue-200 rounded-full h-3 overflow-hidden">
+                        <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-full progress-animate" style="width: 92%; animation-delay: 0.2s;"></div>
+                    </div>
+                    <p class="text-right text-xs text-blue-600 mt-1">92% 🎯</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-white to-yellow-50 p-6 rounded-lg shadow-md border border-yellow-300 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">🍽️</span>
+                        <h3 class="text-lg font-bold text-yellow-600">당신이 좋아할 맛집 찾기</h3>
+                    </div>
+                    <div class="w-full bg-yellow-200 rounded-full h-3 overflow-hidden">
+                        <div class="bg-gradient-to-r from-yellow-500 to-orange-500 h-full progress-animate" style="width: 96%; animation-delay: 0.3s;"></div>
+                    </div>
+                    <p class="text-right text-xs text-yellow-600 mt-1">96% 😋</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-white to-red-50 p-6 rounded-lg shadow-md border border-red-300 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">💗</span>
+                        <h3 class="text-lg font-bold text-red-600">감정 표현하기</h3>
+                    </div>
+                    <div class="w-full bg-red-200 rounded-full h-3 overflow-hidden">
+                        <div class="bg-gradient-to-r from-red-500 to-pink-500 h-full progress-animate" style="width: 100%; animation-delay: 0.4s;"></div>
+                    </div>
+                    <p class="text-right text-xs text-red-600 mt-1">100% 💯</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-white to-purple-50 p-6 rounded-lg shadow-md border border-purple-300 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">🌟</span>
+                        <h3 class="text-lg font-bold text-purple-600">당신을 위해 노력하기</h3>
+                    </div>
+                    <div class="w-full bg-purple-200 rounded-full h-3 overflow-hidden">
+                        <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-full progress-animate" style="width: 100%; animation-delay: 0.5s;"></div>
+                    </div>
+                    <p class="text-right text-xs text-purple-600 mt-1">100% 💪</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Together Gallery Section -->
+    <section id="gallery" class="py-20 px-4 bg-gradient-to-b from-pink-100 via-rose-50 to-orange-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-4 text-slate-800">💕 우리 함께 💕</h2>
+            <div class="text-center mb-16 text-3xl">🌸 당신과 함께하는 모든 순간이 소중합니다 🌸</div>
+
+            <div class="flex justify-center">
+                <div class="relative max-w-md">
+                    <!-- Decorative frame -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-pink-300 to-rose-300 rounded-3xl blur-sm opacity-50"></div>
+
+                    <!-- Photo -->
+                    <div class="relative bg-white p-6 rounded-3xl shadow-2xl border-4 border-pink-200">
+                        <img src="couple.jpg" alt="우리 함께의 사진" class="w-full h-auto rounded-2xl shadow-lg object-cover">
+                        <div class="text-center mt-6 py-4 border-t-2 border-pink-200">
+                            <p class="text-xl font-bold text-pink-600">💗 우리 함께 💗</p>
+                            <p class="text-sm text-slate-500 mt-2">당신의 웃음이 저의 행복입니다</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <p class="text-lg text-slate-700 mb-4 leading-relaxed max-w-2xl mx-auto">
+                    🌹 이 사진처럼 우리의 모든 순간들이 소중하고 아름답습니다.<br>
+                    당신과 함께 만드는 매일의 추억들이 제 가장 큰 보물입니다. 💕
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 bg-gradient-to-b from-yellow-50 to-orange-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-4 text-slate-800">💝 우리의 이야기 💝</h2>
+            <div class="text-center mb-12 text-2xl">🌻 🌼 🌷 🌹 🌺</div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-pink-300 rounded-lg overflow-hidden hover:shadow-xl transition-all transform hover:scale-105">
+                    <div class="bg-gradient-to-r from-pink-500 to-rose-500 text-white text-5xl flex items-center justify-center h-40">
+                        😊💕
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-pink-600 mb-2">매일의 미소 프로젝트</h3>
+                        <p class="text-slate-600 mb-4">
+                            당신의 진심 어린 웃음이 저의 가장 큰 선물입니다. 매일 하루를 더 특별하게 만들어드리겠습니다. 🌸
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="text-xs bg-pink-200 text-pink-800 px-3 py-1 rounded-full">#사랑</span>
+                            <span class="text-xs bg-pink-200 text-pink-800 px-3 py-1 rounded-full">#행복</span>
+                            <span class="text-xs bg-pink-200 text-pink-800 px-3 py-1 rounded-full">#매일</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-300 rounded-lg overflow-hidden hover:shadow-xl transition-all transform hover:scale-105">
+                    <div class="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-5xl flex items-center justify-center h-40">
+                        🎁💗
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-purple-600 mb-2">특별한 순간 만들기</h3>
+                        <p class="text-slate-600 mb-4">
+                            당신을 깜짝 놀래키고, 당신이 가장 행복해하는 모습을 보고 싶습니다. 함께 만드는 특별한 추억들이 저의 보물입니다. 🎉
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="text-xs bg-purple-200 text-purple-800 px-3 py-1 rounded-full">#기획</span>
+                            <span class="text-xs bg-purple-200 text-purple-800 px-3 py-1 rounded-full">#감동</span>
+                            <span class="text-xs bg-purple-200 text-purple-800 px-3 py-1 rounded-full">#놀라움</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-300 rounded-lg overflow-hidden hover:shadow-xl transition-all transform hover:scale-105">
+                    <div class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-5xl flex items-center justify-center h-40">
+                        📸💫
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-cyan-600 mb-2">우리 함께의 추억 기록</h3>
+                        <p class="text-slate-600 mb-4">
+                            당신과 함께하는 모든 순간이 소중합니다. 작은 일상부터 큰 순간까지, 영원히 간직하고 싶은 우리의 이야기들. 🌸
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="text-xs bg-cyan-200 text-cyan-800 px-3 py-1 rounded-full">#추억</span>
+                            <span class="text-xs bg-cyan-200 text-cyan-800 px-3 py-1 rounded-full">#함께</span>
+                            <span class="text-xs bg-cyan-200 text-cyan-800 px-3 py-1 rounded-full">#영원</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-gradient-to-b from-rose-100 to-pink-100">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-2 text-slate-800">💝 우리 함께 이야기하기 💝</h2>
+            <div class="text-3xl mb-8">🌸 🌹 🌺 🌻 🌷</div>
+            <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                당신의 목소리를 듣고 싶어요. 언제든 편하게 연락주세요. 💗<br>
+                당신과의 대화가 제 하루를 특별하게 만들어줍니다.
+            </p>
+
+            <div class="bg-gradient-to-r from-white to-pink-50 bg-opacity-95 p-12 rounded-3xl shadow-xl border-4 border-pink-300 hover:shadow-2xl transition-shadow">
+                <p class="text-lg text-slate-700 mb-2">
+                    💌 함께하고 싶은 마음 전하기
+                </p>
+                <p class="text-slate-500 mb-6">
+                    아래 이메일로 연락주세요
+                </p>
+                <a href="mailto:지예사랑@zzimzilzoa.com" class="text-2xl font-bold text-pink-600 hover:text-rose-600 mb-8 block transition-colors">
+                    지예사랑@zzimzilzoa.com
+                </a>
+
+                <a href="mailto:지예사랑@zzimzilzoa.com" class="inline-block cute-button bg-gradient-to-r from-pink-500 to-rose-500 text-white px-10 py-4 rounded-full hover:from-pink-600 hover:to-rose-600 transform hover:scale-110 transition-all">
+                    💌 ✨ 마음 전하기 ✨ 💌
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-slate-800 to-slate-900 text-white py-8 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="mb-3 text-lg">🌸 © 2026 구유성의 마음 🌸</p>
+            <p class="text-pink-300 text-base">당신을 위해 만든 이 공간에서 저의 모든 사랑을 담았습니다 💕</p>
+            <p class="text-slate-400 mt-3">Made with 무한한 사랑 for 지예 ♡</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Typing Animation
+        const typingText = "남친이에요";
+        const typingElement = document.getElementById('typing');
+        let index = 0;
+
+        function typeText() {
+            if (index < typingText.length) {
+                typingElement.textContent += typingText[index];
+                index++;
+                setTimeout(typeText, 100);
+            }
+        }
+
+        typeText();
+
+        // Smooth Scroll and Active Nav Link
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            navLinks.forEach(link => {
+                const sectionId = link.getAttribute('href').substring(1);
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 100 && rect.bottom >= 100) {
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when link clicked
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Intersection Observer for Fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            if (section.id !== 'home') {
+                observer.observe(section);
+            }
+        });
+    </script>
+</body>
+</html>
